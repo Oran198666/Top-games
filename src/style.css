@@ -1,0 +1,149 @@
+/* ==========================================
+   SCI-FI COLOR PALETTE
+   ========================================== */
+:root {
+  --sci-cyan: #00e5cc;
+  --sci-blue: #0066ff;
+  --sci-purple: #bd00ff;
+  --sci-pink: #ff007c;
+  --sci-magenta: #ff00ea;
+  --sci-neon-green: #39ff14;
+  --sci-matrix-green: #00ff66;
+  --sci-mint: #a3fff4;
+  --sci-gold: #ffd700;
+  --sci-orange: #ff6c00;
+  --sci-laser-red: #ff3333;
+  --sci-holowhite: #ccffff;
+  --sci-glitch-gray: #a2b5cd;
+  --sci-ice-blue: #b0e2ff;
+  --sci-plasma-violet: #7b68ee;
+  --sci-electric-lime: #ccff00;
+  --bg-deep-space: #050f0f;
+  --bg-panel: #0a1a1a;
+  --panel-border: rgba(0, 200, 180, 0.2);
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+body {
+  background-color: var(--bg-deep-space);
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(0, 200, 180, 0.12), transparent 40%),
+    linear-gradient(rgba(0, 200, 180, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 180, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px, 20px 20px;
+  color: var(--sci-holowhite);
+  font-family: 'Courier New', Courier, monospace;
+  padding: 3rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   GAME CARDS
+   ========================================== */
+.speaker-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 200, 180, 0.05), inset 0 0 15px rgba(0, 200, 180, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.speaker-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: var(--sci-cyan) var(--bg-deep-space);
+  display: block;
+  width: 0;
+}
+
+.speaker-card:hover {
+  border-color: var(--sci-cyan);
+  box-shadow: 0 0 25px rgba(0, 200, 180, 0.2), inset 0 0 10px rgba(0, 200, 180, 0.1);
+  transform: translateY(-5px);
+}
+
+.speaker-card h2 {
+  color: var(--sci-cyan);
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0, 200, 180, 0.6);
+  border-bottom: 2px dashed rgba(0, 200, 180, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.speaker-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--panel-border);
+}
+
+/* ==========================================
+   LOG & SYSTEM OUTPUTS
+   ========================================== */
+.log {
+  padding: 0.5rem 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid transparent;
+  color: var(--sci-holowhite);
+}
+
+.log.info {
+  color: var(--sci-ice-blue);
+  border-left-color: var(--sci-cyan);
+}
+
+.log.info:nth-of-type(1) { color: var(--sci-mint); }
+.log.info:nth-of-type(2) { color: var(--sci-glitch-gray); }
+.log.info:nth-of-type(3) { color: var(--sci-electric-lime); }
+.log.info:nth-of-type(4) { color: var(--sci-gold); }
+
+.log.on {
+  color: var(--sci-neon-green);
+  border-left-color: var(--sci-matrix-green);
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+  background: rgba(57, 255, 20, 0.05);
+  animation: pulse 2s infinite alternate;
+}
+
+.log.off {
+  color: var(--sci-laser-red);
+  border-left-color: var(--sci-pink);
+  text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+  background: rgba(255, 51, 51, 0.05);
+}
+
+.log:last-of-type {
+  color: var(--sci-magenta);
+  border-left-color: var(--sci-purple);
+  text-shadow: 0 0 5px rgba(255, 0, 234, 0.5);
+  background: rgba(255, 0, 234, 0.05);
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes pulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; box-shadow: inset 0 0 8px rgba(0, 200, 180, 0.1); }
+}
