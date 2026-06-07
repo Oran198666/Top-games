@@ -141,6 +141,26 @@ body {
 }
 
 /* ==========================================
+   CUSTOM SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep-space);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffff99;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}
+
+/* ==========================================
    ANIMATIONS
    ========================================== */
 @keyframes pulse {
